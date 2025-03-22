@@ -1,6 +1,6 @@
 services:
   sekhmet:
-    container_name: heimdallr_main
+    container_name: sekhmet_app
     build:
       context: ../
       dockerfile: ./docker/sekhmet/Dockerfile

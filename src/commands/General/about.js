@@ -6,7 +6,7 @@ const aboutEmbed = new EmbedBuilder()
   .setTitle("Learn about Sekhmet")
   .setDescription(
     `Sekhmet is  developed by Vulgarbear for use within The Talking Room community servers. \n
-    She is built upon [discord.js](https://discord.js.org/) and [commandkit](https://commandkit.js.org/). More information can be found on the [github](). \n
+    She is built upon [discord.js](https://discord.js.org/) and [commandkit](https://commandkit.js.org/). More information can be found on the [github](https://github.com/VulgarBear/sekhmet). \n
     Join the development [community server](https://discord.gg/MzVg2Kdd9d) to learn more!`
   );
 

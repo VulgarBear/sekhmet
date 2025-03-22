@@ -1,0 +1,10 @@
+services:
+  sekhmet:
+    container_name: heimdallr_main
+    build:
+      context: ../
+      dockerfile: ./docker/sekhmet/Dockerfile
+    restart: unless-stopped
+    env_file:
+      - path: ./sekhmet.env
+        required: true

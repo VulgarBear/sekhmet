@@ -1,5 +1,4 @@
 require("dotenv/config");
-
 const { Client, IntentsBitField } = require("discord.js");
 const { CommandKit } = require("commandkit");
 
@@ -16,8 +15,9 @@ new CommandKit({
   client,
   eventsPath: `${__dirname}/events`,
   commandsPath: `${__dirname}/commands`,
-  devGuildIds: ["620103284681736194"],
-  devRoleIds: ["1352780554831138876"],
+  bulkRegister: true,
+  devGuildIds: ["1352807376104722564"],
+  devRoleIds: ["1352893592556802049"],
 });
 
 client.login(process.env.TOKEN);

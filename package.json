@@ -1,0 +1,20 @@
+{
+    "name": "commandkit-app",
+    "packageManager": "yarn@4.6.0",
+    "type": "commonjs",
+    "main": "./src/sekhmet.js",
+    "version": "0.0.0",
+    "scripts": {
+        "start": "node ./src/sekhmet.js",
+        "dev": "nodemon --ext js,json,ts ./src/sekhmet.js"
+    },
+    "dependencies": {
+        "commandkit": "^0.1.10",
+        "discord.js": "^14.18.0",
+        "dotenv": "^16.4.7",
+        "global": "^4.4.0",
+        "nodemon": "^3.1.9",
+        "pino": "^9.6.0",
+        "pino-pretty": "^13.0.0"
+    }
+}

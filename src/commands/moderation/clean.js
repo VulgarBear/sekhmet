@@ -20,7 +20,7 @@ module.exports = {
     if (amount > 100) {
       interaction.reply({
         content: "Unable to delete over 100 messages at one time.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     } else {
       // Get deleted messages
@@ -28,7 +28,7 @@ module.exports = {
         const { size } = await interaction.channel.bulkDelete(amount);
         await interaction.reply({
           content: `Deleted ${size} messages.`,
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       } catch (err) {
         logger.error(err);
@@ -36,14 +36,14 @@ module.exports = {
         interaction.reply({
           content:
             "An error occured, please make sure there are no messages over 14 days old included.",
-          ephemeral: true,
+          flags: MessageFlags.Ephemeral,
         });
       }
     }
   },
 
   options: {
-    guildOnly: true,
+    dm_permission: false,
     userPermissions: ["ManageMessages"],
     botPermissions: ["ManageMessages"],
   },

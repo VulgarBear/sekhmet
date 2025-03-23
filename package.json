@@ -14,6 +14,7 @@
         "cm": "git cz"
     },
     "dependencies": {
+        "axios": "^1.8.4",
         "commandkit": "^0.1.10",
         "discord.js": "^14.18.0",
         "dotenv": "^16.4.7",
@@ -55,10 +56,10 @@
                 }
             ],
             [
-              "@iwavesmedia/semantic-release-composer",
-              {
-                "skipOnMissingComposerJson": true
-              }
+                "@iwavesmedia/semantic-release-composer",
+                {
+                    "skipOnMissingComposerJson": true
+                }
             ],
             [
                 "@semantic-release/git",

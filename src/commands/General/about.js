@@ -21,6 +21,6 @@ module.exports = {
   },
 
   options: {
-    guildOnly: true,
+    dm_permission: false,
   },
 };

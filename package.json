@@ -4,6 +4,7 @@
         "type": "git",
         "url": "https://github.com/VulgarBear/sekhmet.git"
     },
+    "packageManager": "yarn@4.6.0",
     "type": "commonjs",
     "main": "./src/sekhmet.js",
     "version": "0.2.0",

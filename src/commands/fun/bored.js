@@ -20,7 +20,6 @@ module.exports = {
     } catch (err) {
       interaction.reply({
         content: "Something went wrong!",
-        flags: MessageFlags.Ephemeral,
       });
       logger.error(err);
     }

@@ -16,9 +16,9 @@ module.exports = {
   run: async ({ interaction, client, handler }) => {
     // Set args
     const question = interaction.options.getString("question");
-    const answer = await funHelper.eightball();
+    const answer = await funHelper.eightBall();
 
-    const questionEmbed = new EmbedBuild()
+    const questionEmbed = new EmbedBuilder()
       .setColor(process.env.EMBED)
       .setTitle("The Magic 8-Ball")
       .addFields(

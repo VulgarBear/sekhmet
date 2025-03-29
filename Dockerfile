@@ -7,4 +7,6 @@ RUN mkdir /bot
 WORKDIR /bot
 COPY . /bot
 
+RUN npm install && npm cache clean
+
 CMD ["npm", "run", "start"]

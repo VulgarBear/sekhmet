@@ -13,10 +13,10 @@ module.exports = {
     description: "Give feedback on Sekhmet!",
   },
 
-  run: async ({ interaction, client }) => {
+  run: async ({ interaction, client, CommandKit }) => {
     // Fetch feedback channel
     const feedbackChannelId = process.env.FEEDBACK_ID;
-    const feedbackChannel = await client.channels.fetch(feedbackChannelId);
+    const feedbackChannel = await CommandKit.channels.fetch(feedbackChannelId);
 
     if (!feedbackChannel) {
       return interaction.reply({

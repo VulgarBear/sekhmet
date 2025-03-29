@@ -36,14 +36,13 @@ module.exports = {
         interaction.reply({
           content:
             "An error occured, please make sure there are no messages over 14 days old included.",
-          ephemeral: true,
         });
       }
     }
   },
 
   options: {
-    guildOnly: true,
+    dm_permission: false,
     userPermissions: ["ManageMessages"],
     botPermissions: ["ManageMessages"],
   },

@@ -1,10 +1,13 @@
 {
   "conventionalCommits.scopes": [
-    "beta"
+    "beta",
+    "funCommands"
   ],
   "cSpell.words": [
+    "Animechan",
     "borales",
     "commandkit",
-    "iwavesmedia"
+    "iwavesmedia",
+    "Vulgarbear"
   ]
 }

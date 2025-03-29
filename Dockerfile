@@ -3,10 +3,13 @@ FROM node:alpine AS base
 # Setup env variabless for yarn
 ENV NODE_ENV=production YARN_VERSION=4.6.0
 
+# install and use yarn 4.x
+RUN corepack enable && corepack prepare yarn@${YARN_VERSION}
+
 RUN mkdir /bot
 WORKDIR /bot
 COPY . /bot
 
-RUN npm install && npm cache clean
+RUN yarn install && yarn cache clean
 
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]

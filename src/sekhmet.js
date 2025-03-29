@@ -1,6 +1,9 @@
 require("dotenv/config");
-const { Client, IntentsBitField } = require("discord.js");
+const { Client, IntentsBitField, Partials } = require("discord.js");
 const { CommandKit } = require("commandkit");
+const mongoDB = require("./database/connect");
+
+const devGuild = process.env.DEV_GUILDS.split(", ");
 
 const client = new Client({
   intents: [
@@ -8,6 +11,14 @@ const client = new Client({
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.MessageContent,
+    IntentsBitField.Flags.GuildMessageReactions,
+  ],
+  partials: [
+    Partials.Message,
+    Partials.Channel,
+    Partials.Reaction,
+    Partials.GuildMember,
+    Partials.User,
   ],
 });
 
@@ -16,8 +27,10 @@ new CommandKit({
   eventsPath: `${__dirname}/events`,
   commandsPath: `${__dirname}/commands`,
   bulkRegister: true,
-  devGuildIds: ["1352807376104722564"],
+  devGuildIds: devGuild,
   devRoleIds: ["1352893592556802049"],
 });
+
+mongoDB();
 
 client.login(process.env.TOKEN);

@@ -5,7 +5,6 @@ module.exports = {
   data: {
     name: "bored",
     description: "Ideas for what to do when your bored",
-    dm_permission: false,
   },
 
   run: async ({ interaction }) => {

@@ -16,7 +16,7 @@ module.exports = {
 
     // Build Embed
     const aniQuoteEmbed = new EmbedBuilder()
-      .setColor(process.env.embed)
+      .setColor(process.env.EMBED)
       .setTitle(`${animeCharacter} from ${animeTitle}`)
       .setDescription(animeQuote);
 

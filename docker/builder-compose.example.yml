@@ -8,3 +8,10 @@ services:
     env_file:
       - path: ./sekhmet.env
         required: true
+    ports:
+      - ${PORT}:4500
+    networks:
+      - dev_room
+    environment:
+      TOKEN: ${TOKEN}
+      EMBED: ${EMBED}

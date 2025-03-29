@@ -1,0 +1,31 @@
+networks:
+  sekhmet:
+    external: false
+
+services:
+  sekhmet:
+    image: sekhmet-dev-0.4.0:latest
+    container_name: sekhmet_app
+    restart: unless-stopped
+    env_file:
+      - path: ./.env
+        required: true
+    ports:
+      - ${BOT_PORT}:4500
+    networks:
+      - sekhmet
+    environment:
+      TOKEN: ${TOKEN}
+      EMBED: ${EMBED}
+      mongoURL: mongodb://mongo:${DB_PORT}
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: sekhmet_db
+    restart: unless-stopped
+    networks:
+      - sekhmet
+    volumes:
+      - /home/vulgarbear/compose/sekhmet/data:/data/db

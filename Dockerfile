@@ -1,7 +1,7 @@
-FROM node:slim AS base
+FROM node:alpine AS base
 
 # Setup env variabless for yarn
-ENV NODE_ENV=production YARN_VERSION=4.2.2
+ENV NODE_ENV=production YARN_VERSION=4.6.0
 
 # install and use yarn 4.x
 RUN corepack enable && corepack prepare yarn@${YARN_VERSION}

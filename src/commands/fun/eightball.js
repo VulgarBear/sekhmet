@@ -30,6 +30,9 @@ module.exports = {
   },
 
   options: {
+    devOnly: false,
+    cooldown: "5s",
+    isActive: true,
     dm_permission: false,
   },
 };

@@ -3,7 +3,6 @@ const logger = require("../client/logger");
 
 // 8ball
 // Generates random 8ball result
-
 const eightBall = async () => {
   const answers = [
     "It is certain",
@@ -32,21 +31,15 @@ const eightBall = async () => {
   return answer;
 };
 
-// Cute Helper
-// Generates cute animal picture
-// dogURL: 'https://random.dog/doggos'
-// foxURL: 'https://randomfox.ca/floof/'
-// catURL: 'https://api.thecatapi.com/v1/images/search'
-// birbURL: 'http://shibe.online/api/birds?&urls=true&httpsUrls=true'
-
 // Insult Helper
 // Generates random insult from Evil Insult API
-
-// Kitsu Helper
-// Get's anime or manga information based on command useage.
-
-// TMDB Helper
-// Fetches information about a movie, series, or actor
+const insult = async () => {
+  const insultSearch = await axios.get(
+    "https://evilinsult.com/generate_insult.php?lang=en&type=json"
+  );
+  const insultData = insultSearch.data.insult;
+  return insultData;
+};
 
 //Bored Helper
 // Fetches random thing to do when bored
@@ -59,7 +52,19 @@ const bored = async () => {
   return boredData;
 };
 
+// Animechan; Anime Quotes
+const aniQuote = async () => {
+  const aniQuoteSearch = await axios.get(
+    "https://animechan.io/api/v1/quotes/random"
+  );
+
+  const aniQuote = aniQuoteSearch.data;
+  return aniQuote;
+};
+
 module.exports = {
   bored,
   eightBall,
+  insult,
+  aniQuote,
 };

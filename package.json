@@ -7,7 +7,7 @@
     "packageManager": "yarn@4.6.0",
     "type": "commonjs",
     "main": "./src/sekhmet.js",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "scripts": {
         "start": "node ./src/sekhmet.js",
         "dev": "nodemon --ext js,json,ts ./src/sekhmet.js",

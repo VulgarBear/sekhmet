@@ -45,11 +45,7 @@ module.exports = {
           `**Command Response Time:** ${commandResponseTime}\n` +
           `**Websocket Latency:** Loading...\n` + // Placeholder for WebSocket ping
           `**Bot Owner:** ${botOwnerMention}`
-      )
-      .setFooter({
-        text: `Requested by ${interaction.user.tag}`,
-        iconURL: interaction.user.displayAvatarURL(),
-      });
+      );
 
     // Send initial embed
     const sentMessage = await interaction.editReply({ embeds: [embed] });
@@ -70,13 +66,10 @@ module.exports = {
   },
 
   options: {
+    devOnly: false,
     cooldown: "5s",
     isActive: true,
-    isAdmin: true,
-    //devOnly: true,
-    //userPermissions: ['Adminstrator'],
-    //botPermissions: ['BanMembers'],
-    //deleted: true,
+    dm_permission: false,
   },
 };
 

@@ -27,7 +27,12 @@ module.exports = {
         .addFields(
           { name: "Type:", value: scryData.type_line, inline: true },
           { name: "Mana Cost", value: scryData.mana_cost, inline: true },
-          { name: "Buy This Card", value: scryData.purchase_uris.tcgplayer }
+          {
+            name: "Buy This Card",
+            value: `[TCG Player](${scryData.purchase_uris.tcgplayer})
+            [CardMarket](${scryData.purchase_uris.cardmarket})
+            [CardHoarder](${scryData.purchase_uris.cardhoarder})`,
+          }
         )
         .setFooter({
           text: "API Source ScryFall.com",

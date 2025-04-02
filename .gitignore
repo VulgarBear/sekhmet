@@ -14,3 +14,4 @@
 /.env
 /node_modules
 /package-lock.json
+/src/commands/dev/test.js

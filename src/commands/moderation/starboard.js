@@ -45,7 +45,7 @@ module.exports = {
     }
 
     // Sub Commands
-    var data = await starboard.findOne({ Guild: interaction.guild.id });
+    const data = await starboard.findOne({ Guild: interaction.guild.id });
 
     switch (sub) {
       case "setup": {
@@ -54,8 +54,8 @@ module.exports = {
             `<:Crossmark:1355452870488752262> Looks like the starboard system is already setup.. once a message gets \`${data.Count}\` ⭐'s, it will be send in <#${data.Channel}>`
           );
         } else {
-          var channel = options.getChannel("channel");
-          var count = options.getInteger("star-count") || 1;
+          const channel = options.getChannel("channel");
+          const count = options.getInteger("star-count") || 1;
 
           await starboard.create({
             Guild: interaction.guild.id,
@@ -89,7 +89,7 @@ module.exports = {
             `<:Crossmark:1355452870488752262> Looks like there is no starboard system setup.`
           );
         } else {
-          var string = `**Star Channel:** <#${data.Channel}> \n**Required Stars:** \`${data.Count}\``;
+          const string = `**Star Channel:** <#${data.Channel}> \n**Required Stars:** \`${data.Count}\``;
           await sendMessage(
             `<:Checkmark:1355452854114193439> **Your Starboard System** \n\n${string}`
           );

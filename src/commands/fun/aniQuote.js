@@ -18,7 +18,11 @@ module.exports = {
     const aniQuoteEmbed = new EmbedBuilder()
       .setColor(process.env.EMBED)
       .setTitle(`${animeCharacter} from ${animeTitle}`)
-      .setDescription(animeQuote);
+      .setDescription(animeQuote)
+      .setFooter({
+        text: "API Source animechan.io",
+        iconURL: "https://ohthe.vulgarity.xyz/animechan-p4chhf8140GK.webp",
+      });
 
     interaction.reply({ embeds: [aniQuoteEmbed] });
   },

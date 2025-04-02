@@ -62,10 +62,50 @@ const aniQuote = async () => {
   return aniQuote;
 };
 
+// Kitsu Helper
+// Get's anime or manga information based on command useage.
+
+const kitsu = async (type, name) => {
+  const MANGA_URL = "https://kitsu.io/api/edge/manga";
+
+  if (type === "anime") {
+    const res = await axios.get(
+      `http://kitsu.io/api/edge/anime?filter[text]=${name}&page[limit]=1&json=true`
+    );
+
+    const searchData = res.data.data[0];
+    return searchData;
+  } else if (type === "manga") {
+    const res = await axios.get(
+      `${MANGA_URL}?filter[text]=${name}&page[limit]=1`
+    );
+
+    const searchData = res.data.data[0];
+    return searchData;
+  } else {
+  }
+};
+
+// Scryfall
+// Search for a MTG card
+
+const scryfall = async (card) => {
+  console.log(card);
+  const scrySearch = await axios.get(
+    `https://api.scryfall.com/cards/search?q=${card}&format=json`
+  );
+
+  const scryData = scrySearch.data.data[0];
+  console.log(scryData.name);
+  return scryData;
+};
+
 // Export above axios searches
 module.exports = {
   bored,
   eightBall,
   insult,
   aniQuote,
+  kitsu,
+  scryfall,
 };

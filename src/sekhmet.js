@@ -8,10 +8,11 @@ const devGuild = process.env.DEV_GUILDS.split(", ");
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
+    IntentsBitField.Flags.GuildModeration,
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent,
     IntentsBitField.Flags.GuildMessageReactions,
+    IntentsBitField.Flags.MessageContent,
   ],
   partials: [
     Partials.Message,

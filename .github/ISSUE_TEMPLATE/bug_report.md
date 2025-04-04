@@ -7,8 +7,9 @@ assignees: VulgarBear
 ---
 
 **Which service are you receiving an error with?**
-[ ] Heimdallr Bot
-[ ] Web Dashboard
+
+- [x] Sekhmet Bot
+- [ ] Web Dashboard
 
 **Describe the bug**
 Please provide a description of the error. If given a specific error message please provide that output.

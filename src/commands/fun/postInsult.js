@@ -32,7 +32,7 @@ module.exports = {
   },
 
   options: {
-    devOnly: true,
+    devOnly: false,
     cooldown: "5s",
     isActive: true,
     dm_permission: false,

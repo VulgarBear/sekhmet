@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const funHelper = require("../../util/query/funHelper");
 
 module.exports = {
@@ -15,9 +15,19 @@ module.exports = {
   run: async ({ interaction, client, handler }) => {
     // Set args
     const insultUser = await interaction.options.getUser("user");
-    const insultResult = await funHelper.insult();
+    const insultResult = await funHelper.insultGet();
 
-    interaction.reply(`${insultUser} ` + insultResult);
+    // Create Embed & Send
+    const embed = new EmbedBuilder()
+      .setColor(process.env.EMBED)
+      .setTitle("A time honored tradition")
+      .setDescription(`${insultUser}, ${insultResult.data[0].insult}.`)
+      .setFooter({
+        text: `Insult submitted by ${insultResult.data[0].author}`,
+        ironURL: "https://ohthe.vulgarity.xyz/middle_finger-ovwIYwJDKKgi.jpg",
+      });
+
+    interaction.reply({ embeds: [embed] });
   },
 
   options: {

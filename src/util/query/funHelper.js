@@ -32,13 +32,38 @@ const eightBall = async () => {
 };
 
 // Insult Helper
-// Generates random insult from Evil Insult API
-const insult = async () => {
-  const insultSearch = await axios.get(
-    "https://evilinsult.com/generate_insult.php?lang=en&type=json"
-  );
-  const insultData = insultSearch.data.insult;
+// Gets random insult from vulgarAPI
+const insultGet = async () => {
+  const insultSearch = await axios.get(process.env.VULGAR_INSULT_URL);
+  const insultData = insultSearch.data;
   return insultData;
+};
+
+// Posts user generated insult to the API
+const insultPost = async (insultNew, user) => {
+  let data = JSON.stringify({
+    insult: `${insultNew}`,
+    author: `${user}`,
+  });
+
+  let config = {
+    method: "post",
+    maxBodyLength: 150,
+    url: process.env.VULGAR_INSULT_URL,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  const insultRes = await axios
+    .request(config)
+    .then((response) => {
+      logger.info(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      logger.error(error);
+    });
 };
 
 //Bored Helper
@@ -104,7 +129,8 @@ const scryfall = async (card) => {
 module.exports = {
   bored,
   eightBall,
-  insult,
+  insultGet,
+  insultPost,
   aniQuote,
   kitsu,
   scryfall,

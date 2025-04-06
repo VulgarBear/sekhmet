@@ -13,6 +13,10 @@
     "cooldown",
     "Crossmark",
     "iwavesmedia",
+    "Kitsu",
+    "scry",
+    "Scryfall",
     "Vulgarbear"
-  ]
+  ],
+  "docwriter.style": "Auto-detect"
 }

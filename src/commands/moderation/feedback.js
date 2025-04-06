@@ -14,14 +14,20 @@ module.exports = {
   },
 
   run: async ({ interaction, client }) => {
-    // Fetch feedback channel
+    
+    /* This block of code is responsible for fetching the feedback channel where the feedback provided
+    by users will be sent.*/
     const feedbackChannelId = process.env.FEEDBACK_ID;
-    const feedbackChannel = await client.channels.cache.get(feedbackChannelId);
+    logger.info(`Attempting to fetch feedback channel with ID: ${feedbackChannelId}`);
+
+    const feedbackChannel = client.channels.cache.get(feedbackChannelId) || 
+                          await client.channels.fetch(feedbackChannelId).catch(e => null);
 
     if (!feedbackChannel) {
+      logger.error(`Failed to find feedback channel. Channel ID: ${feedbackChannelId}`);
+      logger.error(`Available channels in cache: ${Array.from(client.channels.cache.keys()).join(', ')}`);
       return interaction.reply({
-        content:
-          "Unable to find feedback channel. <:nugget_mummy:1355453397133955142>",
+        content: "Unable to find feedback channel. <:nugget_mummy:1355453397133955142>",
         ephemeral: true,
       });
     }

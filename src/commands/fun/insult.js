@@ -23,7 +23,7 @@ module.exports = {
       .setTitle("A time honored tradition")
       .setDescription(`${insultUser}, ${insultResult.data[0].insult}.`)
       .setFooter({
-        text: `Insult submitted by ${insultResult.data[0].author}`,
+        text: `Insult submitted by ${insultResult.data[0].author} (ID ${insultResult.data[0].id})`,
         ironURL: "https://ohthe.vulgarity.xyz/middle_finger-ovwIYwJDKKgi.jpg",
       });
 

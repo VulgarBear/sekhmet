@@ -5,7 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.9] - 2025-04-11
 
+### Changed
+- Updated project to use Standard.js Style for consistent code formatting
+- Improved code readability and maintainability through standardized style
+
+## [0.4.8] - 2025-04-10
+
+### Added
+- Chat command that integrates with Ollama AI for generating responses
+- Ollama API integration for AI text generation
+- Support for multiple AI models through Ollama
+
+### Changed
+- Updated the chat command to use embeds for better presentation
+- Improved error handling in the Ollama API integration
 
 ## [0.4.6] - 2025-04-06
 
@@ -72,6 +87,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docker configuration
 - Development environment setup
 
+[0.4.9]: https://github.com/VulgarBear/sekhmet/releases/tag/v0.4.9
+[0.4.8]: https://github.com/VulgarBear/sekhmet/releases/tag/v0.4.8
 [0.4.6]: https://github.com/VulgarBear/sekhmet/releases/tag/v0.4.6
 [0.4.5]: https://github.com/VulgarBear/sekhmet/releases/tag/v0.4.5
 [0.4.4]: https://github.com/VulgarBear/sekhmet/releases/tag/v0.4.4

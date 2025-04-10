@@ -1,5 +1,5 @@
-const axios = require("axios");
-const logger = require("../client/logger");
+const axios = require('axios')
+const logger = require('../client/logger')
 
 /**
  * Sends a prompt to Ollama and returns the response
@@ -8,34 +8,34 @@ const logger = require("../client/logger");
  * @param {Object} options - Additional options for the request
  * @returns {Promise<string>} - The response from Ollama
  */
-async function queryOllama(prompt, model = 'llama3.2:1b', options = {}) {
+async function queryOllama (prompt, model = 'llama3.2:1b', options = {}) {
   try {
-    let data = JSON.stringify({
-        "model": model,
-        "prompt": prompt,
-        "stream": false,
-        "num_predict": 1000
+    const data = JSON.stringify({
+      model,
+      prompt,
+      stream: false,
+      num_predict: 1000
     })
 
-    let config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: process.env.OLLAMA_URL,
-        headers: { 
-            'Content-Type': 'application/json'
-          },
-        data : data
+    const config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: process.env.OLLAMA_URL,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data
     }
 
-    const response = await axios.request(config);
-    
-    return response.data.response;
+    const response = await axios.request(config)
+
+    return response.data.response
   } catch (error) {
-    logger.error(`Error querying Ollama: ${error.message}`);
-    throw error;
+    logger.error(`Error querying Ollama: ${error.message}`)
+    throw error
   }
 }
 
 module.exports = {
   queryOllama
-};
+}

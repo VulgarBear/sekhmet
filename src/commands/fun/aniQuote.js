@@ -1,18 +1,18 @@
-const { EmbedBuilder } = require("discord.js");
-const funHelper = require("../../util/query/funHelper");
+const { EmbedBuilder } = require('discord.js')
+const funHelper = require('../../util/query/funHelper')
 
 module.exports = {
   data: {
-    name: "anime_quote",
-    description: "Request an anime quote",
-    dm_permission: false,
+    name: 'anime_quote',
+    description: 'Request an anime quote',
+    dm_permission: false
   },
 
   run: async ({ interaction }) => {
-    const animeInfo = await funHelper.aniQuote();
-    const animeTitle = animeInfo.data.anime.name;
-    const animeQuote = animeInfo.data.content;
-    const animeCharacter = animeInfo.data.character.name;
+    const animeInfo = await funHelper.aniQuote()
+    const animeTitle = animeInfo.data.anime.name
+    const animeQuote = animeInfo.data.content
+    const animeCharacter = animeInfo.data.character.name
 
     // Build Embed
     const aniQuoteEmbed = new EmbedBuilder()
@@ -20,17 +20,17 @@ module.exports = {
       .setTitle(`${animeCharacter} from ${animeTitle}`)
       .setDescription(animeQuote)
       .setFooter({
-        text: "API Source animechan.io",
-        iconURL: "https://ohthe.vulgarity.xyz/animechan-p4chhf8140GK.webp",
-      });
+        text: 'API Source animechan.io',
+        iconURL: 'https://ohthe.vulgarity.xyz/animechan-p4chhf8140GK.webp'
+      })
 
-    interaction.reply({ embeds: [aniQuoteEmbed] });
+    interaction.reply({ embeds: [aniQuoteEmbed] })
   },
 
   options: {
     devOnly: false,
-    cooldown: "5s",
+    cooldown: '5s',
     isActive: true,
-    dm_permission: false,
-  },
-};
+    dm_permission: false
+  }
+}

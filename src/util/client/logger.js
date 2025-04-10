@@ -1,16 +1,16 @@
-const pino = require("pino");
+const pino = require('pino')
 
 module.exports = pino({
-  level: process.env.PINO_LOG_LEVEL || "info",
+  level: process.env.PINO_LOG_LEVEL || 'info',
   formatters: {
     level: (label) => {
-      return { level: label.toUpperCase() };
-    },
+      return { level: label.toUpperCase() }
+    }
   },
   transport: {
-    target: "pino-pretty",
+    target: 'pino-pretty',
     options: {
-      colorize: true,
-    },
-  },
-});
+      colorize: true
+    }
+  }
+})

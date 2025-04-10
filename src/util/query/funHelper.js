@@ -1,5 +1,5 @@
-const axios = require("axios");
-const logger = require("../client/logger");
+const axios = require('axios')
+const logger = require('../client/logger')
 
 /**
  * The function `eightBall` asynchronously returns a random answer from a predefined list of responses
@@ -9,32 +9,31 @@ const logger = require("../client/logger");
 
 const eightBall = async () => {
   const answers = [
-    "It is certain",
-    "It is decidedly so",
-    "Without a doubt",
-    "Yes definitely",
-    "You may rely on it",
-    "As I see it, yes",
-    "Most likely",
-    "Outlook good",
-    "Yes",
-    "Signs point to yes",
-    "Reply hazy try again",
-    "Ask again later",
-    "Better not tell you now",
-    "Cannot predict now",
-    "Concentrate and ask again",
+    'It is certain',
+    'It is decidedly so',
+    'Without a doubt',
+    'Yes definitely',
+    'You may rely on it',
+    'As I see it, yes',
+    'Most likely',
+    'Outlook good',
+    'Yes',
+    'Signs point to yes',
+    'Reply hazy try again',
+    'Ask again later',
+    'Better not tell you now',
+    'Cannot predict now',
+    'Concentrate and ask again',
     "Don't count on it",
-    "My reply is no",
-    "My sources say no",
-    "Outlook not so good",
-    "Very doubtful",
-  ];
+    'My reply is no',
+    'My sources say no',
+    'Outlook not so good',
+    'Very doubtful'
+  ]
 
-  const answer = answers[Math.floor(Math.random() * answers.length)];
-  return answer;
-};
-
+  const answer = answers[Math.floor(Math.random() * answers.length)]
+  return answer
+}
 
 /**
  * The function insultGet asynchronously fetches insults from a specified URL using axios.
@@ -43,11 +42,10 @@ const eightBall = async () => {
  */
 
 const insultGet = async () => {
-  const insultSearch = await axios.get(process.env.VULGAR_INSULT_URL);
-  const insultData = insultSearch.data;
-  return insultData;
-};
-
+  const insultSearch = await axios.get(process.env.VULGAR_INSULT_URL)
+  const insultData = insultSearch.data
+  return insultData
+}
 
 /**
  * The function `insultPost` sends a new insult and the author's name to a specified URL using a POST
@@ -57,31 +55,30 @@ const insultGet = async () => {
  */
 
 const insultPost = async (insultNew, user) => {
-  let data = JSON.stringify({
+  const data = JSON.stringify({
     insult: `${insultNew}`,
-    author: `${user}`,
-  });
+    author: `${user}`
+  })
 
-  let config = {
-    method: "post",
+  const config = {
+    method: 'post',
     maxBodyLength: 300,
     url: process.env.VULGAR_INSULT_URL,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json'
     },
-    data: data,
-  };
+    data
+  }
 
   const insultRes = await axios
     .request(config)
     .then((response) => {
-      logger.info(JSON.stringify(response.data));
+      logger.info(JSON.stringify(response.data))
     })
     .catch((error) => {
-      logger.error(error);
-    });
-};
-
+      logger.error(error)
+    })
+}
 
 /**
  * The function bored asynchronously fetches a random activity from the Bored API and returns it.
@@ -91,13 +88,12 @@ const insultPost = async (insultNew, user) => {
 
 const bored = async () => {
   const boredSearch = await axios.get(
-    "https://bored-api.appbrewery.com/random"
-  );
+    'https://bored-api.appbrewery.com/random'
+  )
 
-  const boredData = boredSearch.data.activity;
-  return boredData;
-};
-
+  const boredData = boredSearch.data.activity
+  return boredData
+}
 
 /**
  * The function aniQuote asynchronously fetches a random anime quote from the animechan.io API.
@@ -107,13 +103,12 @@ const bored = async () => {
 
 const aniQuote = async () => {
   const aniQuoteSearch = await axios.get(
-    "https://animechan.io/api/v1/quotes/random"
-  );
+    'https://animechan.io/api/v1/quotes/random'
+  )
 
-  const aniQuote = aniQuoteSearch.data;
-  return aniQuote;
-};
-
+  const aniQuote = aniQuoteSearch.data
+  return aniQuote
+}
 
 /**
  * The function `kitsu` is an asynchronous function that fetches data from the Kitsu API based on the
@@ -129,25 +124,25 @@ const aniQuote = async () => {
  */
 
 const kitsu = async (type, name) => {
-  const MANGA_URL = "https://kitsu.io/api/edge/manga";
+  const MANGA_URL = 'https://kitsu.io/api/edge/manga'
 
-  if (type === "anime") {
+  if (type === 'anime') {
     const res = await axios.get(
       `http://kitsu.io/api/edge/anime?filter[text]=${name}&page[limit]=1&json=true`
-    );
+    )
 
-    const searchData = res.data.data[0];
-    return searchData;
-  } else if (type === "manga") {
+    const searchData = res.data.data[0]
+    return searchData
+  } else if (type === 'manga') {
     const res = await axios.get(
       `${MANGA_URL}?filter[text]=${name}&page[limit]=1`
-    );
+    )
 
-    const searchData = res.data.data[0];
-    return searchData;
+    const searchData = res.data.data[0]
+    return searchData
   } else {
   }
-};
+}
 
 /**
  * The function `scryfall` takes a card name as input, performs a search on the Scryfall API, and
@@ -158,16 +153,15 @@ const kitsu = async (type, name) => {
  * query from the Scryfall API.
  */
 const scryfall = async (card) => {
-  console.log(card);
+  console.log(card)
   const scrySearch = await axios.get(
     `https://api.scryfall.com/cards/search?q=${card}&format=json`
-  );
+  )
 
-  const scryData = scrySearch.data.data[0];
-  console.log(scryData.name);
-  return scryData;
-};
-
+  const scryData = scrySearch.data.data[0]
+  console.log(scryData.name)
+  return scryData
+}
 
 /* The `module.exports` statement in Node.js is used to export functions, objects, or values from a
 module so that they can be imported and used in other parts of the application. */
@@ -179,5 +173,5 @@ module.exports = {
   insultPost,
   aniQuote,
   kitsu,
-  scryfall,
-};
+  scryfall
+}

@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const Schema = new mongoose.Schema({
   Guild: String,
-  Role: String,
-});
+  Role: String
+})
 
-module.exports = mongoose.model("defaultRoles", Schema);
+module.exports = mongoose.model('defaultRoles', Schema)

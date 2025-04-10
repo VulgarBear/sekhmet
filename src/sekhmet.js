@@ -1,9 +1,9 @@
-require("dotenv/config");
-const { Client, IntentsBitField, Partials } = require("discord.js");
-const { CommandKit } = require("commandkit");
-const mongoDB = require("./database/connect");
+require('dotenv/config')
+const { Client, IntentsBitField, Partials } = require('discord.js')
+const { CommandKit } = require('commandkit')
+const mongoDB = require('./database/connect')
 
-const devGuild = process.env.DEV_GUILDS.split(", ");
+const devGuild = process.env.DEV_GUILDS.split(', ')
 
 const client = new Client({
   intents: [
@@ -12,16 +12,16 @@ const client = new Client({
     IntentsBitField.Flags.GuildMembers,
     IntentsBitField.Flags.GuildMessages,
     IntentsBitField.Flags.GuildMessageReactions,
-    IntentsBitField.Flags.MessageContent,
+    IntentsBitField.Flags.MessageContent
   ],
   partials: [
     Partials.Message,
     Partials.Channel,
     Partials.Reaction,
     Partials.GuildMember,
-    Partials.User,
-  ],
-});
+    Partials.User
+  ]
+})
 
 new CommandKit({
   client,
@@ -29,9 +29,9 @@ new CommandKit({
   commandsPath: `${__dirname}/commands`,
   bulkRegister: true,
   devGuildIds: devGuild,
-  devRoleIds: ["1352893592556802049"],
-});
+  devRoleIds: ['1352893592556802049']
+})
 
-mongoDB();
+mongoDB()
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN)

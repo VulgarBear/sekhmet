@@ -28,4 +28,8 @@ services:
     networks:
       - sekhmet
     volumes:
-      - /home/vulgarbear/compose/sekhmet/data:/data/db
+      - mondodb:/data/db
+
+volumes:
+  mongodb:
+    driver: local

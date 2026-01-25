@@ -13,18 +13,23 @@ concurrency:
 
 jobs:
   versioning:
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           fetch-tags: true
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          fetch-tags: true
       - name: calculate version
         id: calculate-version
-        uses: bitshifted/git-auto-semver@v1
+        uses: bitshifted/git-auto-semver@v2
         with:
           main_branch: main
           create_tag: true

@@ -9,7 +9,7 @@ module.exports = {
       option
         .setName("user")
         .setDescription("Who would you like to insult?")
-        .setRequired(true)
+        .setRequired(true),
     ),
 
   run: async ({ interaction, client, handler }) => {
@@ -23,8 +23,7 @@ module.exports = {
       .setTitle("A time honored tradition")
       .setDescription(`${insultUser}, ${insultResult.content}.`)
       .setFooter({
-        text: `Author: ${insultResult.author} | ${insultResult.id}`,
-        ironURL: "https://ohthe.vulgarity.xyz/middle_finger-ovwIYwJDKKgi.jpg",
+        text: `${insultResult.id}`,
       });
 
     interaction.reply({ embeds: [embed] });

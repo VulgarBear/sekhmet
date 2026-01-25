@@ -42,17 +42,10 @@ const eightBall = async () => {
  */
 
 const insultGet = async () => {
-  let config = {
-    method: "get",
-    maxBodyLength: Infinity,
-    url: "https://api.baibusu.social/insults/random",
-    headers: {
-      "x-api-key": `${process.env.BAIBUSU_API}`,
-    },
-  };
+  let options = { method: "GET", url: "http://10.0.0.70:3050/api/insults" };
 
   const getInsult = await axios
-    .request(config)
+    .request(options)
     .then((response) => {
       return response.data;
     })
@@ -60,7 +53,7 @@ const insultGet = async () => {
       logger.error(error);
     });
 
-  const insult = getInsult.insults;
+  const insult = getInsult;
   return insult;
 };
 
@@ -77,19 +70,19 @@ const insultPost = async (insultNew, user) => {
     content: insultNew,
   });
 
-  let config = {
-    method: "post",
-    maxBodyLength: Infinity,
-    url: "https://api.baibusu.social/insults",
+  let options = {
+    method: "POST",
+    url: "http://10.0.0.70:3050/api/insults",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": `${process.env.BAIBUSU_API}`,
+      Authorization: `Bearer ${process.env.BAIBUSU_API}`,
     },
-    data: data,
+    data: { author: user, content: insultNew },
   };
 
+  //"x-api-key": `${process.env.BAIBUSU_API}`
   const status = await axios
-    .request(config)
+    .request(options)
     .then((response) => {
       console.log(JSON.stringify(response.data));
       return "passed";
@@ -110,7 +103,7 @@ const insultPost = async (insultNew, user) => {
 
 const bored = async () => {
   const boredSearch = await axios.get(
-    "https://bored-api.appbrewery.com/random"
+    "https://bored-api.appbrewery.com/random",
   );
 
   const boredData = boredSearch.data.activity;
@@ -125,7 +118,7 @@ const bored = async () => {
 
 const aniQuote = async () => {
   const aniQuoteSearch = await axios.get(
-    "https://animechan.io/api/v1/quotes/random"
+    "https://animechan.io/api/v1/quotes/random",
   );
 
   const aniQuote = aniQuoteSearch.data;
@@ -150,14 +143,14 @@ const kitsu = async (type, name) => {
 
   if (type === "anime") {
     const res = await axios.get(
-      `http://kitsu.io/api/edge/anime?filter[text]=${name}&page[limit]=1&json=true`
+      `http://kitsu.io/api/edge/anime?filter[text]=${name}&page[limit]=1&json=true`,
     );
 
     const searchData = res.data.data[0];
     return searchData;
   } else if (type === "manga") {
     const res = await axios.get(
-      `${MANGA_URL}?filter[text]=${name}&page[limit]=1`
+      `${MANGA_URL}?filter[text]=${name}&page[limit]=1`,
     );
 
     const searchData = res.data.data[0];
@@ -177,7 +170,7 @@ const kitsu = async (type, name) => {
 const scryfall = async (card) => {
   console.log(card);
   const scrySearch = await axios.get(
-    `https://api.scryfall.com/cards/search?q=${card}&format=json`
+    `https://api.scryfall.com/cards/search?q=${card}&format=json`,
   );
 
   const scryData = scrySearch.data.data[0];
